@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:todos/all_tasks.dart';
-import 'package:todos/completed_tasks.dart';
-import 'package:todos/incomplete_tasks.dart';
+import 'package:todos/task_tab.dart';
 
 import 'package:todos/todos_model.dart';
 
 import 'add_task_screen.dart';
-
 
 void main() => runApp(TodosApp());
 
@@ -72,9 +69,9 @@ class _HomeScreenState extends State<HomeScreen>
       body: TabBarView(
         controller: controller,
         children: <Widget>[
-          AllTasksTab(),
-          IncompleteTasksTab(),
-          CompletedTasksTab(),
+          TasksTab((TodosModel todosModel) => todosModel.allTasks),
+          TasksTab((TodosModel todosModel) => todosModel.incompleteTasks),
+          TasksTab((TodosModel todosModel) => todosModel.completedTasks),
         ],
       ),
     );
